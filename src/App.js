@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import { NavLink, Route } from "react-router-dom";
+import { Container } from "semantic-ui-react";
+import EventFormPage from "./pages/event-form-page";
+import EventListPage from "./pages/event-list-page";
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <Container>
+      <div className="ui two item menu">
+        <NavLink className="item" activeClassName="active" exact to="/">
+          Lista de Eventos
+        </NavLink>
+        <NavLink
+          className="item"
+          activeClassName="active"
+          exact
+          to="/events/new"
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          Adicionar Evento
+        </NavLink>
+      </div>
+      <Route exact path="/" component={EventListPage} />
+      <Route path="/events/new" component={EventFormPage} />
+      <Route path="/events/edit/:id" component={EventFormPage} />
+    </Container>
   );
-}
+};
 
 export default App;
