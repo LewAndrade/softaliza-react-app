@@ -1,0 +1,81 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Intro to Coding",
+      "description": "An intro to coding with JS, React, HTML & CSS",
+      "date": "2020-12-20T12:00:00.000Z",
+      "email": "intro@coding.edu",
+      "type": 1,
+      "phone": "11987654321",
+      "address": "Rua do Limoeiro, N. 25",
+      "url": ""
+    },
+    {
+      "id": 2,
+      "title": "LGBTQIA+ Gathering",
+      "description": "An event to celebrate your pride, and join other folks like you!! ",
+      "date": "2020-12-25T18:30:00.000Z",
+      "email": "lgbt@people.org",
+      "phone": "11912345678",
+      "type": 2,
+      "address": "",
+      "url": "https://lgbt.com"
+    },
+    {
+      "id": 3,
+      "title": "Music Live",
+      "description": "Join us to listen and play some music!!",
+      "date": "2020-12-25T09:00:00.000Z",
+      "email": "musics@live.com",
+      "phone": "11998877665",
+      "type": 3,
+      "address": "Rua do Limoeiro, N. 25",
+      "url": "https://www.livemusic.com"
+    },
+    {
+      "id": 4,
+      "title": "Intro to Coding",
+      "description": "An intro to coding with JS, React, HTML & CSS",
+      "date": "2020-12-20T12:00:00.000Z",
+      "email": "intro@coding.edu",
+      "type": 1,
+      "phone": "11987654321",
+      "address": "Rua do Limoeiro, N. 25",
+      "url": ""
+    },
+    {
+      "id": 5,
+      "title": "LGBTQIA+ Gathering",
+      "description": "An event to celebrate your pride, and join other folks like you!! ",
+      "date": "2020-12-25T18:30:00.000Z",
+      "email": "lgbt@people.org",
+      "phone": "11912345678",
+      "type": 2,
+      "address": "",
+      "url": "https://lgbt.com"
+    },
+    {
+      "id": 6,
+      "title": "Music Live",
+      "description": "Join us to listen and play some music!!",
+      "date": "2020-12-25T09:00:00.000Z",
+      "email": "musics@live.com",
+      "phone": "11998877665",
+      "type": 3,
+      "address": "Rua do Limoeiro, N. 25",
+      "url": "https://www.livemusic.com"
+    },
+    {
+      "id": 7,
+      "title": "Intro to Coding",
+      "description": "An intro to coding with JS, React, HTML & CSS",
+      "date": "2020-12-20T12:00:00.000Z",
+      "email": "intro@coding.edu",
+      "type": 1,
+      "phone": "11987654321",
+      "address": "Rua do Limoeiro, N. 25",
+      "url": ""
+    }
+  ]
+}
