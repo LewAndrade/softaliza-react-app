@@ -2,38 +2,32 @@ import React from "react";
 import { Card, Button, Icon } from "semantic-ui-react";
 
 const EventCard = ({ event }) => {
-  const event_date = () => {
-    var date = new Date(event.date);
-    return date.toLocaleString();
-  };
-
   const event_type = () => {
-    switch (event.type) {
-      case 1:
+    if (event.address && event.url) {
+      return (
+        <>
+          <p>
+            <Icon name="map marker alternate" /> {event.address} <br />
+          </p>
+          <p>
+            <Icon name="at" /> {event.url}
+          </p>
+        </>
+      );
+    } else if (event.address || event.url) {
+      if (event.address) {
         return (
           <p>
-            <Icon name="map marker alternate" /> {event.address}
+            <Icon name="map marker alternate" /> {event.address} <br />
           </p>
         );
-      case 2:
+      } else if (event.url) {
         return (
           <p>
             <Icon name="at" /> {event.url}
           </p>
         );
-      case 3:
-        return (
-          <>
-            <p>
-              <Icon name="map marker alternate" /> {event.address} <br />
-            </p>
-            <p>
-              <Icon name="at" /> {event.url}
-            </p>
-          </>
-        );
-      default:
-        break;
+      }
     }
   };
 
@@ -46,7 +40,7 @@ const EventCard = ({ event }) => {
         <Card.Description>
           <p>{event.description}</p>
           <p>
-            <Icon name="calendar alternate outline" /> {event_date()}
+            <Icon name="calendar alternate outline" /> {event.date}
           </p>
           <p>
             <Icon name="envelope" /> {event.email}

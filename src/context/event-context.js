@@ -16,6 +16,17 @@ function reducer(state, action) {
         events: action.payload,
       };
     }
+    case "CREATE_EVENT": {
+      return {
+        ...state,
+        events: [...state.events, action.payload],
+        message: {
+          type: "success",
+          title: "Success",
+          content: "New Event created !!",
+        },
+      };
+    }
     case "FLASH_MESSAGE": {
       return {
         ...state,
