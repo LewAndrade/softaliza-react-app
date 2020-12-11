@@ -47,6 +47,18 @@ function reducer(state, action) {
         },
       };
     }
+    case "DELETE_EVENT": {
+      const { id, title } = action.payload;
+      return {
+        ...state,
+        events: state.events.filter((item) => item.id !== id),
+        message: {
+          type: "success",
+          title: "Delete Successful",
+          content: `Event "${title} has been deleted!"`,
+        },
+      };
+    }
     case "FLASH_MESSAGE": {
       return {
         ...state,

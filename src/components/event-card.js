@@ -1,8 +1,29 @@
 import React from "react";
+import axios from "axios";
 import { Card, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import { EventContext } from "../context/event-context";
+import { flashErrorMessage } from "./flash-message";
+import { API_URL } from "../resources/connection";
+
+const { useContext } = React;
 
 const EventCard = ({ event }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [state, dispatch] = useContext(EventContext);
+
+  const deleteEvent = async (id) => {
+    try {
+      const response = await axios.delete(API_URL + `/events/${id}`);
+      dispatch({
+        type: "DELETE_EVENT",
+        payload: response.data,
+      });
+    } catch (error) {
+      flashErrorMessage(dispatch, error);
+    }
+  };
+
   const event_type = () => {
     if (event.address && event.url) {
       return (
@@ -57,7 +78,7 @@ const EventCard = ({ event }) => {
           <Button basic color="blue" as={Link} to={`events/edit/${event.id}`}>
             Edit
           </Button>
-          <Button basic color="red">
+          <Button basic color="red" onClick={() => deleteEvent(event.id)}>
             Delete
           </Button>
         </div>
