@@ -8,9 +8,9 @@ import { EventContext } from "../context/event-context";
 import { flashErrorMessage } from "./flash-message";
 import { API_URL } from "../resources/connection";
 
-const EventForm = () => {
+const EventForm = ({ event }) => {
   const [state, dispatch] = useContext(EventContext);
-  const { register, errors, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm({ defaultValues: event });
   const [redirect, setRedirect] = useState(false);
 
   const createEvent = async (data) => {
@@ -26,18 +26,37 @@ const EventForm = () => {
     }
   };
 
+  const updateEvent = async (data) => {
+    try {
+      const response = await axios.patch(API_URL + `/events/${event.id}`, data);
+      dispatch({
+        type: "UPDATE_EVENT",
+        payload: response.data,
+      });
+      setRedirect(true);
+    } catch (error) {
+      flashErrorMessage(dispatch, error);
+    }
+  };
+
   const onSubmit = async (data) => {
-    await createEvent(data);
+    if (event.id) {
+      await updateEvent(data);
+    } else {
+      await createEvent(data);
+    }
   };
 
   if (redirect) {
     return <Redirect to="/" />;
   }
-  //TODO: fix data form
+
   return (
     <Grid centered columns={2}>
       <Grid.Column>
-        <h1 style={{ marginTop: "1em" }}>Add New Event</h1>
+        <h1 style={{ marginTop: "1em" }}>
+          {event.id ? "Edit Contact" : "Add New Event"}
+        </h1>
         <Form onSubmit={handleSubmit(onSubmit)} loading={state.loading}>
           <Form.Field className={classnames({ error: errors.title })}>
             <label htmlFor="title">

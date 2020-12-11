@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 const EventCard = ({ event }) => {
   const event_type = () => {
@@ -32,7 +33,7 @@ const EventCard = ({ event }) => {
   };
 
   return (
-    <Card centered link raised href={`/events/${event.id}`}>
+    <Card centered link raised>
       <Card.Content>
         <Card.Header>
           <Icon name="calendar check outline" /> {event.title}
@@ -53,7 +54,7 @@ const EventCard = ({ event }) => {
       </Card.Content>
       <Card.Content extra>
         <div className="ui two buttons">
-          <Button basic color="blue">
+          <Button basic color="blue" as={Link} to={`events/edit/${event.id}`}>
             Edit
           </Button>
           <Button basic color="red">

@@ -27,6 +27,26 @@ function reducer(state, action) {
         },
       };
     }
+    case "FETCH_EVENT": {
+      return {
+        ...state,
+        event: action.payload,
+      };
+    }
+    case "UPDATE_EVENT": {
+      const event = action.payload;
+      return {
+        ...state,
+        events: state.events.map((item) =>
+          item.id === event.id ? event : item
+        ),
+        message: {
+          type: "success",
+          title: "Update Successful",
+          content: `Event "${event.title}" has been updated!`,
+        },
+      };
+    }
     case "FLASH_MESSAGE": {
       return {
         ...state,
